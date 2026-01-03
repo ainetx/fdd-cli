@@ -1,6 +1,6 @@
 # Init - Feature Design
 
-**Status**: ⏳ NOT_STARTED  
+**Status**: ✅ IMPLEMENTED  
 **Module**: fdd-cli
 
 ---
@@ -123,6 +123,7 @@ fdd-cli/
 
 **Completed Changes**: See `openspec/changes/archive/` for details:
 - `2026-01-03-setup-typescript-project` - Set up TypeScript project foundation [Status: ✅ COMPLETED]
+- `2026-01-03-cli-entry-point` - CLI Entry Point with Command Framework [Status: ✅ COMPLETED]
 
 **Planned Changes**:
 
@@ -132,7 +133,7 @@ fdd-cli/
    - Add tsup build configuration
    - Create directory structure
 
-2. **cli-entry-point** [PENDING]
+2. ✅ **cli-entry-point** [COMPLETED 2026-01-03]
    - Create src/index.ts with CLI framework
    - Register placeholder commands
    - Add help and version commands
