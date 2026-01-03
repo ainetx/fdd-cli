@@ -6,12 +6,11 @@ Command-line tool for Feature-Driven Development (FDD) methodology workflows.
 
 **Version**: 0.1.0  
 **Architecture**: DRAFT (awaiting validation)  
-**Features**: 🔄 IN PROGRESS (1/8 features started)
+**Features**: ✅ 1/8 IMPLEMENTED
 
 ### Current Progress
 
-- ✅ TypeScript project foundation complete
-- 🔄 feature-init: setup-typescript-project completed (2026-01-03)
+- ✅ feature-init: CLI entry point fully implemented (2026-01-03)
 - ⏳ 7 features pending implementation
 
 ## Installation
@@ -23,8 +22,8 @@ npm install
 # Build
 npm run build
 
-# Run CLI
-node dist/index.js --help
+# Link CLI locally for development
+npm link
 ```
 
 ## Quick Start
@@ -39,6 +38,12 @@ fdd --help
 
 ## Structure
 
+- `src/` - Source code
+  - `commands/` - CLI command implementations
+  - `utils/` - Shared utilities (logger, errors)
+  - `validators/` - Validation engines
+  - `generators/` - Code generators
+  - `types/` - TypeScript type definitions
 - `architecture/` - FDD designs and specifications
   - `DESIGN.md` - Overall Design (system architecture)
   - `cli-specs/` - CLI API specifications (CLISPEC format)
