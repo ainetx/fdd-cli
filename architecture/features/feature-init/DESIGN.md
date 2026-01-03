@@ -121,15 +121,18 @@ fdd-cli/
 
 ### Implementation Plan
 
-**OpenSpec Changes**:
+**Completed Changes**: See `openspec/changes/archive/` for details:
+- `2026-01-03-setup-typescript-project` - Set up TypeScript project foundation [Status: ✅ COMPLETED]
 
-1. **001-setup-typescript-project**
+**Planned Changes**:
+
+1. ✅ **setup-typescript-project** [COMPLETED 2026-01-03]
    - Create package.json with dependencies
    - Add TypeScript configuration
    - Add tsup build configuration
    - Create directory structure
 
-2. **002-cli-entry-point**
+2. **cli-entry-point** [PENDING]
    - Create src/index.ts with CLI framework
    - Register placeholder commands
    - Add help and version commands

@@ -4,21 +4,37 @@ Command-line tool for Feature-Driven Development (FDD) methodology workflows.
 
 ## Status
 
+**Version**: 0.1.0  
 **Architecture**: DRAFT (awaiting validation)  
-**Features**: Not initialized
+**Features**: 🔄 IN PROGRESS (1/8 features started)
+
+### Current Progress
+
+- ✅ TypeScript project foundation complete
+- 🔄 feature-init: setup-typescript-project completed (2026-01-03)
+- ⏳ 7 features pending implementation
+
+## Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Run CLI
+node dist/index.js --help
+```
 
 ## Quick Start
 
 ```bash
-# Validate Overall Design (requires ≥90/100)
-fdd validate-architecture
+# Check version
+fdd --version
 
-# After validation passes, initialize features
-fdd init-features
-
-# Create and validate individual features
-fdd init-feature <slug>
-fdd validate-feature <slug>
+# Show help
+fdd --help
 ```
 
 ## Structure
