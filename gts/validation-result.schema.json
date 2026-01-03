@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "gts.ainetx.fdd-cli.validation.validation_result.v1",
+  "$id": "gts.ainetx.fdd_cli.validation.validation_result.v1",
   "title": "ValidationResult",
   "description": "Result of a validation operation including score, status, and list of issues",
   "type": "object",
@@ -24,7 +24,7 @@
     "issues": {
       "type": "array",
       "items": {
-        "$ref": "gts://gts.ainetx.fdd-cli.validation.validation_issue.v1"
+        "$ref": "gts://gts.ainetx.fdd_cli.validation.validation_issue.v1"
       },
       "description": "List of validation issues found"
     },

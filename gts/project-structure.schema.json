@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "gts.ainetx.fdd-cli.project.project_structure.v1",
+  "$id": "gts.ainetx.fdd_cli.project.project_structure.v1",
   "title": "ProjectStructure",
   "description": "Representation of FDD project directory structure",
   "type": "object",

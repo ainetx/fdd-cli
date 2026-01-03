@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "gts.ainetx.fdd-cli.design.design_document.v1",
+  "$id": "gts.ainetx.fdd_cli.design.design_document.v1",
   "title": "DesignDocument",
   "description": "Parsed representation of Overall or Feature design document",
   "type": "object",

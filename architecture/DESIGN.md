@@ -100,29 +100,29 @@ Command-line interface following CLI design patterns and docopt.org conventions.
 
 **Location**: `gts/`
 
-**Specification**: See adapter for DML syntax and validation rules. Refer to `spec/GTS/README.md` for complete type reference syntax.
+**Specification**: See adapter for DML syntax and validation rules. Refer to [`spec/GTS/README.md`](../spec/GTS/README.md) for complete type reference syntax.
 
 **Types**:
 
 Core domain types for FDD CLI operations:
 
-- **ValidationResult** (`gts.ainetx.fdd-cli.validation.validation_result.v1`): Result of validation operation with score, status, and list of issues. Used by all validation commands to return structured feedback.
+- **ValidationResult** ([`gts.ainetx.fdd_cli.validation.validation_result.v1`](../gts/validation-result.schema.json)): Result of validation operation with score, status, and list of issues. Used by all validation commands to return structured feedback.
 
-- **ValidationIssue** (`gts.ainetx.fdd-cli.validation.validation_issue.v1`): Individual validation problem with severity (error/warning/info), error code, message, location, and suggested fix.
+- **ValidationIssue** ([`gts.ainetx.fdd_cli.validation.validation_issue.v1`](../gts/validation-issue.schema.json)): Individual validation problem with severity (error/warning/info), error code, message, location, and suggested fix.
 
-- **ProjectStructure** (`gts.ainetx.fdd-cli.project.project_structure.v1`): Representation of FDD project directory structure including paths to architecture/, features/, diagrams/, domain model, and API contracts directories.
+- **ProjectStructure** ([`gts.ainetx.fdd_cli.project.project_structure.v1`](../gts/project-structure.schema.json)): Representation of FDD project directory structure including paths to architecture/, features/, diagrams/, domain model, and API contracts directories.
 
-- **AdapterConfig** (`gts.ainetx.fdd-cli.adapter.adapter_config.v1`): FDD adapter configuration defining domain model technology, API contract format, locations, and project-specific conventions.
+- **AdapterConfig** ([`gts.ainetx.fdd_cli.adapter.adapter_config.v1`](../gts/adapter-config.schema.json)): FDD adapter configuration defining domain model technology, API contract format, locations, and project-specific conventions.
 
-- **DesignDocument** (`gts.ainetx.fdd-cli.design.design_document.v1`): Parsed representation of Overall or Feature design document with sections content and metadata.
+- **DesignDocument** ([`gts.ainetx.fdd_cli.design.design_document.v1`](../gts/design-document.schema.json)): Parsed representation of Overall or Feature design document with sections content and metadata.
 
-- **FeatureManifest** (`gts.ainetx.fdd-cli.features.feature_manifest.v1`): FEATURES.md manifest structure tracking project name, status, and list of all features.
+- **FeatureManifest** ([`gts.ainetx.fdd_cli.features.feature_manifest.v1`](../gts/feature-manifest.schema.json)): FEATURES.md manifest structure tracking project name, status, and list of all features.
 
-- **Feature** (`gts.ainetx.fdd-cli.features.feature.v1`): Individual feature entry with slug, name, status (NOT_STARTED/IN_PROGRESS/IMPLEMENTED), design path, and dependencies.
+- **Feature** ([`gts.ainetx.fdd_cli.features.feature.v1`](../gts/feature.schema.json)): Individual feature entry with slug, name, status (NOT_STARTED/IN_PROGRESS/IMPLEMENTED), design path, and dependencies.
 
 All type definitions are located in `gts/*.schema.json` following GTS specification format.
 
-**Linking**: Use GTS reference format: `gts://gts.ainetx.fdd-cli.<namespace>.<type>.v<version>` in JSON Schema $ref fields. See `spec/GTS/README.md` for complete reference syntax.
+**Linking**: Use GTS reference format: `gts://gts.ainetx.fdd_cli.<namespace>.<type>.v<version>` in JSON Schema $ref fields. See `spec/GTS/README.md` for complete reference syntax.
 
 ### API Contracts
 
@@ -130,46 +130,46 @@ All type definitions are located in `gts/*.schema.json` following GTS specificat
 
 **Location**: `spec/CLI`
 
-**Specification**: See adapter for API format and validation rules. Refer to `spec/FDD/CLISPEC.md` for complete command specification format.
+**Specification**: See adapter for API format and validation rules. Refer to [`spec/FDD/CLISPEC.md`](../spec/FDD/CLISPEC.md) for complete command specification format.
 
 **Endpoints** (CLI Commands):
 
 **Validation Commands**:
-- `fdd-cli validate adapter <path>` - Validate FDD adapter configuration
+- `fdd validate adapter <path>` - Validate FDD adapter configuration
   - Input: Path to adapter directory (e.g., `spec/FDD-Adapter`)
-  - Output: ValidationResult with score and issues list
+  - Output: [ValidationResult](../gts/validation-result.schema.json) with score and issues list
   - Returns: Exit code 0 (valid), 1 (invalid)
   
-- `fdd-cli validate architecture <path>` - Validate Overall Design document
+- `fdd validate architecture <path>` - Validate Overall Design document
   - Input: Path to architecture directory or DESIGN.md file
-  - Output: ValidationResult (requires ≥90/100 to pass)
+  - Output: [ValidationResult](../gts/validation-result.schema.json) (requires ≥90/100 to pass)
   - Returns: Detailed validation report with score and blocking issues
   
-- `fdd-cli validate feature <path>` - Validate Feature Design document
+- `fdd validate feature <path>` - Validate Feature Design document
   - Input: Path to feature directory or DESIGN.md file
-  - Output: ValidationResult (requires 100/100 + 100% completeness)
+  - Output: [ValidationResult](../gts/validation-result.schema.json) (requires 100/100 + 100% completeness)
   - Returns: Comprehensive validation with completeness check
   
-- `fdd-cli validate manifest <path>` - Validate FEATURES.md manifest
+- `fdd validate manifest <path>` - Validate FEATURES.md manifest
   - Input: Path to FEATURES.md file
-  - Output: ValidationResult with dependency cycle detection
+  - Output: [ValidationResult](../gts/validation-result.schema.json) with dependency cycle detection
   - Returns: Manifest consistency report
 
 **Structure Commands**:
-- `fdd-cli init [path]` - Initialize FDD project structure
+- `fdd init [path]` - Initialize FDD project structure
   - Input: Optional target directory (defaults to current)
-  - Output: ProjectStructure with created paths
+  - Output: [ProjectStructure](../gts/project-structure.schema.json) with created paths
   - Creates: architecture/, features/, diagrams/, domain model, API contracts directories
   
-- `fdd-cli generate structure <design-path>` - Generate folder structure from design
+- `fdd generate structure <design-path>` - Generate folder structure from design
   - Input: Path to Overall Design or Feature Design
-  - Output: ProjectStructure with generated directories
+  - Output: [ProjectStructure](../gts/project-structure.schema.json) with generated directories
   - Reads: Design document to determine required structure
 
 **Utility Commands**:
-- `fdd-cli --version` - Display CLI version information
-- `fdd-cli --help` - Display general help
-- `fdd-cli <command> --help` - Display command-specific help
+- `fdd --version` - Display CLI version information
+- `fdd --help` - Display general help
+- `fdd <command> --help` - Display command-specific help
 
 **Global Flags** (available for all commands):
 - `--json` - Output in JSON format (for AI agent consumption)
@@ -178,10 +178,10 @@ All type definitions are located in `gts/*.schema.json` following GTS specificat
 - `--color / --no-color` - Enable/disable colored output
 
 **Output Format**:
-All validation commands return ValidationResult type in JSON when --json flag is used.
+All validation commands return [ValidationResult](../gts/validation-result.schema.json) type in JSON when --json flag is used.
 Human-readable format is default for terminal usage.
 
-All commands follow docopt.org conventions. Full specifications in `spec/CLI/commands.clispec`.
+All commands follow docopt.org conventions. Full specifications in [`spec/CLI/commands.clispec`](../spec/CLI/commands.clispec).
 
 ### Security Model
 

@@ -1,5 +1,5 @@
 COMMAND validate-adapter
-SYNOPSIS: fdd-cli validate adapter <path> [options]
+SYNOPSIS: fdd validate adapter <path> [options]
 DESCRIPTION: Validate FDD adapter configuration files for correctness and completeness
 WORKFLOW: @FDD.workflows.adapter-config
 
@@ -12,7 +12,7 @@ OPTIONS:
   --quiet, -q  <boolean>  Minimal output (errors only)
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  type: gts.ainetx.fdd_cli.validation.validation_result.v1
   format: Human-readable report or JSON (with --json flag)
 
 EXIT CODES:
@@ -21,9 +21,9 @@ EXIT CODES:
   2  Adapter is incomplete (missing specifications)
 
 EXAMPLE:
-  $ fdd-cli validate adapter spec/FDD-Adapter
-  $ fdd-cli validate adapter spec/FDD-Adapter --json
-  $ fdd-cli validate adapter spec/FDD-Adapter --verbose
+  $ fdd validate adapter spec/FDD-Adapter
+  $ fdd validate adapter spec/FDD-Adapter --json
+  $ fdd validate adapter spec/FDD-Adapter --verbose
 
 RELATED:
   - @Workflow.adapter-config
@@ -32,7 +32,7 @@ RELATED:
 ---
 
 COMMAND validate-architecture
-SYNOPSIS: fdd-cli validate architecture <path> [options]
+SYNOPSIS: fdd validate architecture <path> [options]
 DESCRIPTION: Validate Overall Design document against FDD requirements (requires ≥90/100 score)
 WORKFLOW: @FDD.workflows.02-validate-architecture
 
@@ -45,7 +45,7 @@ OPTIONS:
   --quiet, -q  <boolean>  Minimal output (score and blocking issues only)
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  type: gts.ainetx.fdd_cli.validation.validation_result.v1
   format: Detailed validation report with score, issues, and recommendations
 
 EXIT CODES:
@@ -54,9 +54,9 @@ EXIT CODES:
   2  File not found or invalid format
 
 EXAMPLE:
-  $ fdd-cli validate architecture architecture/
-  $ fdd-cli validate architecture architecture/DESIGN.md --json
-  $ fdd-cli validate architecture . --verbose
+  $ fdd validate architecture architecture/
+  $ fdd validate architecture architecture/DESIGN.md --json
+  $ fdd validate architecture . --verbose
 
 RELATED:
   - @Workflow.02-validate-architecture
@@ -66,7 +66,7 @@ RELATED:
 ---
 
 COMMAND validate-feature
-SYNOPSIS: fdd-cli validate feature <path> [options]
+SYNOPSIS: fdd validate feature <path> [options]
 DESCRIPTION: Validate Feature Design document for completeness and correctness (requires 100/100 score + 100% completeness)
 WORKFLOW: @FDD.workflows.06-validate-feature
 
@@ -80,7 +80,7 @@ OPTIONS:
   --strict  <boolean>  Enable strict validation mode (all warnings become errors)
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  type: gts.ainetx.fdd_cli.validation.validation_result.v1
   format: Comprehensive validation report with score, completeness percentage, and issues
 
 EXIT CODES:
@@ -89,9 +89,9 @@ EXIT CODES:
   2  File not found or invalid format
 
 EXAMPLE:
-  $ fdd-cli validate feature architecture/features/feature-validation/
-  $ fdd-cli validate feature architecture/features/feature-validation/DESIGN.md --json
-  $ fdd-cli validate feature architecture/features/feature-validation/ --strict
+  $ fdd validate feature architecture/features/feature-validation/
+  $ fdd validate feature architecture/features/feature-validation/DESIGN.md --json
+  $ fdd validate feature architecture/features/feature-validation/ --strict
 
 RELATED:
   - @Workflow.06-validate-feature
@@ -101,7 +101,7 @@ RELATED:
 ---
 
 COMMAND validate-manifest
-SYNOPSIS: fdd-cli validate manifest <path> [options]
+SYNOPSIS: fdd validate manifest <path> [options]
 DESCRIPTION: Validate FEATURES.md manifest for structure, dependencies, and consistency
 WORKFLOW: @FDD.workflows.04-validate-features
 
@@ -115,7 +115,7 @@ OPTIONS:
   --check-cycles  <boolean>  [default: true]  Check for circular dependencies
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  type: gts.ainetx.fdd_cli.validation.validation_result.v1
   format: Manifest validation report with dependency analysis
 
 EXIT CODES:
@@ -125,9 +125,9 @@ EXIT CODES:
   3  Circular dependency detected
 
 EXAMPLE:
-  $ fdd-cli validate manifest architecture/features/FEATURES.md
-  $ fdd-cli validate manifest architecture/features/FEATURES.md --json
-  $ fdd-cli validate manifest architecture/features/FEATURES.md --verbose
+  $ fdd validate manifest architecture/features/FEATURES.md
+  $ fdd validate manifest architecture/features/FEATURES.md --json
+  $ fdd validate manifest architecture/features/FEATURES.md --verbose
 
 RELATED:
   - @Workflow.04-validate-features
@@ -137,7 +137,7 @@ RELATED:
 ---
 
 COMMAND init
-SYNOPSIS: fdd-cli init [path] [options]
+SYNOPSIS: fdd init [path] [options]
 DESCRIPTION: Initialize FDD project structure with directories and template files
 WORKFLOW: @FDD.workflows.01-init-project
 
@@ -151,7 +151,7 @@ OPTIONS:
   --force  <boolean>  Overwrite existing files (use with caution)
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.project.project_structure.v1
+  type: gts.ainetx.fdd_cli.project.project_structure.v1
   format: List of created directories and files
 
 EXIT CODES:
@@ -160,10 +160,10 @@ EXIT CODES:
   2  Invalid target directory
 
 EXAMPLE:
-  $ fdd-cli init
-  $ fdd-cli init ./my-project
-  $ fdd-cli init --verbose
-  $ fdd-cli init --force
+  $ fdd init
+  $ fdd init ./my-project
+  $ fdd init --verbose
+  $ fdd init --force
 
 RELATED:
   - @Workflow.01-init-project
@@ -173,7 +173,7 @@ RELATED:
 ---
 
 COMMAND generate-structure
-SYNOPSIS: fdd-cli generate structure <design-path> [options]
+SYNOPSIS: fdd generate structure <design-path> [options]
 DESCRIPTION: Generate folder structure from Overall Design or Feature Design document
 WORKFLOW: None (utility command)
 
@@ -187,7 +187,7 @@ OPTIONS:
   --dry-run  <boolean>  Show what would be created without actually creating files
 
 OUTPUT:
-  type: gts.ainetx.fdd-cli.project.project_structure.v1
+  type: gts.ainetx.fdd_cli.project.project_structure.v1
   format: List of created or would-be-created directories
 
 EXIT CODES:
@@ -197,9 +197,9 @@ EXIT CODES:
   3  Required information missing in design document
 
 EXAMPLE:
-  $ fdd-cli generate structure architecture/DESIGN.md
-  $ fdd-cli generate structure architecture/features/feature-auth/DESIGN.md --dry-run
-  $ fdd-cli generate structure architecture/DESIGN.md --json
+  $ fdd generate structure architecture/DESIGN.md
+  $ fdd generate structure architecture/features/feature-auth/DESIGN.md --dry-run
+  $ fdd generate structure architecture/DESIGN.md --json
 
 RELATED:
   - @CLI.init
@@ -208,7 +208,7 @@ RELATED:
 ---
 
 COMMAND version
-SYNOPSIS: fdd-cli --version
+SYNOPSIS: fdd --version
 DESCRIPTION: Display CLI version information
 WORKFLOW: None
 
@@ -225,8 +225,8 @@ EXIT CODES:
   0  Always successful
 
 EXAMPLE:
-  $ fdd-cli --version
-  $ fdd-cli --version --json
+  $ fdd --version
+  $ fdd --version --json
 
 RELATED:
   - @CLI.help
@@ -234,8 +234,8 @@ RELATED:
 ---
 
 COMMAND help
-SYNOPSIS: fdd-cli --help
-SYNOPSIS: fdd-cli <command> --help
+SYNOPSIS: fdd --help
+SYNOPSIS: fdd <command> --help
 DESCRIPTION: Display help information for CLI or specific command
 WORKFLOW: None
 
@@ -252,9 +252,9 @@ EXIT CODES:
   0  Always successful
 
 EXAMPLE:
-  $ fdd-cli --help
-  $ fdd-cli validate --help
-  $ fdd-cli validate architecture --help
+  $ fdd --help
+  $ fdd validate --help
+  $ fdd validate architecture --help
 
 RELATED:
   - @CLI.version

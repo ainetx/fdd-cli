@@ -43,8 +43,8 @@ Manual edits may be overwritten if workflow is re-run.
 - NO uppercase letters allowed in identifiers
 - Format: `gts.vendor.package.namespace.type.v<MAJOR>[.<MINOR>]`
 - Type names: use snake_case (e.g., `user_profile`, NOT `UserProfile`)
-- Example: `gts.ainetx.fdd-cli.validation.validation_result.v1` ✅
-- Invalid: `gts.ainetx.fdd-cli.validation.ValidationResult.v1` ❌
+- Example: `gts.ainetx.fdd_cli.validation.validation_result.v1` ✅
+- Invalid: `gts.ainetx.fdd_cli.validation.ValidationResult.v1` ❌
 
 **Location**: `gts/`
 
