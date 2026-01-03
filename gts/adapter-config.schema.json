@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.adapter.adapter_config.v1",
+  "title": "AdapterConfig",
+  "description": "FDD adapter configuration defining project-specific conventions",
+  "type": "object",
+  "required": ["projectName", "domainModel", "apiContracts"],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Project identifier"
+    },
+    "domainModel": {
+      "type": "object",
+      "required": ["technology", "location"],
+      "properties": {
+        "technology": {
+          "type": "string",
+          "description": "Domain model technology (e.g., GTS, TypeScript, Protobuf)"
+        },
+        "location": {
+          "type": "string",
+          "description": "Directory path for domain model files"
+        },
+        "specificationPath": {
+          "type": "string",
+          "description": "Path to technology specification"
+        }
+      }
+    },
+    "apiContracts": {
+      "type": "object",
+      "required": ["technology", "location"],
+      "properties": {
+        "technology": {
+          "type": "string",
+          "description": "API contract technology (e.g., OpenAPI, CLISPEC, GraphQL)"
+        },
+        "location": {
+          "type": "string",
+          "description": "Directory path for API contract files"
+        },
+        "specificationPath": {
+          "type": "string",
+          "description": "Path to format specification"
+        }
+      }
+    },
+    "securityModel": {
+      "type": "string",
+      "description": "Security approach description"
+    },
+    "nonFunctionalRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of NFRs"
+    }
+  }
+}

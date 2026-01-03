@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.validation.validation_result.v1",
+  "title": "ValidationResult",
+  "description": "Result of a validation operation including score, status, and list of issues",
+  "type": "object",
+  "required": ["score", "maxScore", "status", "issues"],
+  "properties": {
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Validation score achieved"
+    },
+    "maxScore": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum possible score"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["passed", "failed", "warning"],
+      "description": "Overall validation status"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "$ref": "gts://gts.ainetx.fdd-cli.validation.validation_issue.v1"
+      },
+      "description": "List of validation issues found"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "validatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "validatorVersion": {
+          "type": "string"
+        },
+        "documentPath": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

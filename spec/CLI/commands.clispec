@@ -1,0 +1,262 @@
+COMMAND validate-adapter
+SYNOPSIS: fdd-cli validate adapter <path> [options]
+DESCRIPTION: Validate FDD adapter configuration files for correctness and completeness
+WORKFLOW: @FDD.workflows.adapter-config
+
+ARGUMENTS:
+  path  <directory>  required  Path to adapter directory (e.g., spec/FDD-Adapter)
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed output with file-by-file validation
+  --quiet, -q  <boolean>  Minimal output (errors only)
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  format: Human-readable report or JSON (with --json flag)
+
+EXIT CODES:
+  0  Adapter is valid and complete
+  1  Adapter validation failed (missing or incorrect files)
+  2  Adapter is incomplete (missing specifications)
+
+EXAMPLE:
+  $ fdd-cli validate adapter spec/FDD-Adapter
+  $ fdd-cli validate adapter spec/FDD-Adapter --json
+  $ fdd-cli validate adapter spec/FDD-Adapter --verbose
+
+RELATED:
+  - @Workflow.adapter-config
+  - @CLI.init
+
+---
+
+COMMAND validate-architecture
+SYNOPSIS: fdd-cli validate architecture <path> [options]
+DESCRIPTION: Validate Overall Design document against FDD requirements (requires ≥90/100 score)
+WORKFLOW: @FDD.workflows.02-validate-architecture
+
+ARGUMENTS:
+  path  <path>  required  Path to architecture directory or DESIGN.md file
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed validation output with line-by-line analysis
+  --quiet, -q  <boolean>  Minimal output (score and blocking issues only)
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  format: Detailed validation report with score, issues, and recommendations
+
+EXIT CODES:
+  0  Overall Design is valid (score ≥90/100)
+  1  Overall Design validation failed (score <90/100 or critical issues)
+  2  File not found or invalid format
+
+EXAMPLE:
+  $ fdd-cli validate architecture architecture/
+  $ fdd-cli validate architecture architecture/DESIGN.md --json
+  $ fdd-cli validate architecture . --verbose
+
+RELATED:
+  - @Workflow.02-validate-architecture
+  - @Workflow.03-init-features
+  - @CLI.validate-feature
+
+---
+
+COMMAND validate-feature
+SYNOPSIS: fdd-cli validate feature <path> [options]
+DESCRIPTION: Validate Feature Design document for completeness and correctness (requires 100/100 score + 100% completeness)
+WORKFLOW: @FDD.workflows.06-validate-feature
+
+ARGUMENTS:
+  path  <path>  required  Path to feature directory or feature DESIGN.md file
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed validation with section-by-section analysis
+  --quiet, -q  <boolean>  Minimal output (score and blocking issues only)
+  --strict  <boolean>  Enable strict validation mode (all warnings become errors)
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  format: Comprehensive validation report with score, completeness percentage, and issues
+
+EXIT CODES:
+  0  Feature Design is valid (100/100 score + 100% completeness)
+  1  Feature Design validation failed (score <100 or completeness <100%)
+  2  File not found or invalid format
+
+EXAMPLE:
+  $ fdd-cli validate feature architecture/features/feature-validation/
+  $ fdd-cli validate feature architecture/features/feature-validation/DESIGN.md --json
+  $ fdd-cli validate feature architecture/features/feature-validation/ --strict
+
+RELATED:
+  - @Workflow.06-validate-feature
+  - @Workflow.09-openspec-init
+  - @CLI.validate-architecture
+
+---
+
+COMMAND validate-manifest
+SYNOPSIS: fdd-cli validate manifest <path> [options]
+DESCRIPTION: Validate FEATURES.md manifest for structure, dependencies, and consistency
+WORKFLOW: @FDD.workflows.04-validate-features
+
+ARGUMENTS:
+  path  <path>  required  Path to FEATURES.md file
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed validation with dependency graph analysis
+  --quiet, -q  <boolean>  Minimal output (errors only)
+  --check-cycles  <boolean>  [default: true]  Check for circular dependencies
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.validation.validation_result.v1
+  format: Manifest validation report with dependency analysis
+
+EXIT CODES:
+  0  Manifest is valid and consistent
+  1  Manifest validation failed (structural or dependency issues)
+  2  File not found or invalid format
+  3  Circular dependency detected
+
+EXAMPLE:
+  $ fdd-cli validate manifest architecture/features/FEATURES.md
+  $ fdd-cli validate manifest architecture/features/FEATURES.md --json
+  $ fdd-cli validate manifest architecture/features/FEATURES.md --verbose
+
+RELATED:
+  - @Workflow.04-validate-features
+  - @Workflow.03-init-features
+  - @CLI.validate-feature
+
+---
+
+COMMAND init
+SYNOPSIS: fdd-cli init [path] [options]
+DESCRIPTION: Initialize FDD project structure with directories and template files
+WORKFLOW: @FDD.workflows.01-init-project
+
+ARGUMENTS:
+  path  <directory>  optional  Target directory for project initialization (defaults to current directory)
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed output showing each created file and directory
+  --quiet, -q  <boolean>  Minimal output (errors only)
+  --force  <boolean>  Overwrite existing files (use with caution)
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.project.project_structure.v1
+  format: List of created directories and files
+
+EXIT CODES:
+  0  Project structure initialized successfully
+  1  Initialization failed (permissions or existing files conflict)
+  2  Invalid target directory
+
+EXAMPLE:
+  $ fdd-cli init
+  $ fdd-cli init ./my-project
+  $ fdd-cli init --verbose
+  $ fdd-cli init --force
+
+RELATED:
+  - @Workflow.01-init-project
+  - @CLI.generate-structure
+  - @CLI.validate-architecture
+
+---
+
+COMMAND generate-structure
+SYNOPSIS: fdd-cli generate structure <design-path> [options]
+DESCRIPTION: Generate folder structure from Overall Design or Feature Design document
+WORKFLOW: None (utility command)
+
+ARGUMENTS:
+  design-path  <path>  required  Path to DESIGN.md file (Overall or Feature Design)
+
+OPTIONS:
+  --json  <boolean>  Output results in JSON format for machine consumption
+  --verbose, -v  <boolean>  Enable detailed output showing generation process
+  --quiet, -q  <boolean>  Minimal output (errors only)
+  --dry-run  <boolean>  Show what would be created without actually creating files
+
+OUTPUT:
+  type: gts.ainetx.fdd-cli.project.project_structure.v1
+  format: List of created or would-be-created directories
+
+EXIT CODES:
+  0  Structure generated successfully
+  1  Generation failed (permissions or I/O error)
+  2  Design file not found or invalid format
+  3  Required information missing in design document
+
+EXAMPLE:
+  $ fdd-cli generate structure architecture/DESIGN.md
+  $ fdd-cli generate structure architecture/features/feature-auth/DESIGN.md --dry-run
+  $ fdd-cli generate structure architecture/DESIGN.md --json
+
+RELATED:
+  - @CLI.init
+  - @Workflow.05-init-feature
+
+---
+
+COMMAND version
+SYNOPSIS: fdd-cli --version
+DESCRIPTION: Display CLI version information
+WORKFLOW: None
+
+ARGUMENTS:
+  (none)
+
+OPTIONS:
+  --json  <boolean>  Output version in JSON format
+
+OUTPUT:
+  format: Version string (e.g., "fdd-cli v1.0.0")
+
+EXIT CODES:
+  0  Always successful
+
+EXAMPLE:
+  $ fdd-cli --version
+  $ fdd-cli --version --json
+
+RELATED:
+  - @CLI.help
+
+---
+
+COMMAND help
+SYNOPSIS: fdd-cli --help
+SYNOPSIS: fdd-cli <command> --help
+DESCRIPTION: Display help information for CLI or specific command
+WORKFLOW: None
+
+ARGUMENTS:
+  command  <string>  optional  Command name for specific help
+
+OPTIONS:
+  (none)
+
+OUTPUT:
+  format: Human-readable help text with usage examples
+
+EXIT CODES:
+  0  Always successful
+
+EXAMPLE:
+  $ fdd-cli --help
+  $ fdd-cli validate --help
+  $ fdd-cli validate architecture --help
+
+RELATED:
+  - @CLI.version
+
+---

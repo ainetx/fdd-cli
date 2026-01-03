@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.features.feature_manifest.v1",
+  "title": "FeatureManifest",
+  "description": "FEATURES.md manifest structure tracking all features",
+  "type": "object",
+  "required": ["projectName", "status", "features"],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Project/module name"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PLANNING", "IN_PROGRESS", "COMPLETE"],
+      "description": "Overall manifest status"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "gts://gts.ainetx.fdd-cli.features.feature.v1"
+      },
+      "description": "List of all features"
+    }
+  }
+}

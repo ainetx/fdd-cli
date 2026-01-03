@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.project.project_structure.v1",
+  "title": "ProjectStructure",
+  "description": "Representation of FDD project directory structure",
+  "type": "object",
+  "required": ["rootPath", "directories", "files"],
+  "properties": {
+    "rootPath": {
+      "type": "string",
+      "description": "Absolute path to project root"
+    },
+    "directories": {
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string",
+          "description": "Path to architecture directory"
+        },
+        "features": {
+          "type": "string",
+          "description": "Path to features directory"
+        },
+        "diagrams": {
+          "type": "string",
+          "description": "Path to diagrams directory"
+        },
+        "domainModel": {
+          "type": "string",
+          "description": "Path to domain model directory (per adapter)"
+        },
+        "apiContracts": {
+          "type": "string",
+          "description": "Path to API contracts directory (per adapter)"
+        }
+      },
+      "required": ["architecture", "features", "diagrams"]
+    },
+    "files": {
+      "type": "object",
+      "properties": {
+        "overallDesign": {
+          "type": "string",
+          "description": "Path to Overall Design document"
+        },
+        "featuresManifest": {
+          "type": "string",
+          "description": "Path to FEATURES.md manifest"
+        }
+      },
+      "required": ["overallDesign", "featuresManifest"]
+    }
+  }
+}

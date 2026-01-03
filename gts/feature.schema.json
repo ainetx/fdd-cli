@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.features.feature.v1",
+  "title": "Feature",
+  "description": "Individual feature entry in manifest",
+  "type": "object",
+  "required": ["slug", "name", "status", "designPath"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Kebab-case feature identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable feature name"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["NOT_STARTED", "IN_PROGRESS", "IMPLEMENTED"],
+      "description": "Feature implementation status"
+    },
+    "designPath": {
+      "type": "string",
+      "description": "Path to feature DESIGN.md"
+    },
+    "folderPath": {
+      "type": "string",
+      "description": "Path to feature directory"
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "dependsOn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Feature slugs this feature depends on"
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Feature slugs blocked by this feature"
+        }
+      }
+    }
+  }
+}

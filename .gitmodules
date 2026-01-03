@@ -1,0 +1,6 @@
+[submodule "spec/FDD"]
+	path = spec/FDD
+	url = git@github.com-personal:ainetx/FDD.git
+[submodule "spec/GTS"]
+	path = spec/GTS
+	url = https://github.com/GlobalTypeSystem/gts-spec.git

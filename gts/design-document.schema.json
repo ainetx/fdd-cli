@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gts.ainetx.fdd-cli.design.design_document.v1",
+  "title": "DesignDocument",
+  "description": "Parsed representation of Overall or Feature design document",
+  "type": "object",
+  "required": ["type", "path", "sections"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["overall", "feature"],
+      "description": "Type of design document"
+    },
+    "path": {
+      "type": "string",
+      "description": "File path to design document"
+    },
+    "sections": {
+      "type": "object",
+      "description": "Parsed sections content",
+      "properties": {
+        "sectionA": {
+          "type": "object",
+          "description": "Business Context (Overall) or Feature Overview (Feature)"
+        },
+        "sectionB": {
+          "type": "object",
+          "description": "Requirements & Principles (Overall) or Actor Flows (Feature)"
+        },
+        "sectionC": {
+          "type": "object",
+          "description": "Technical Architecture (Overall) or Algorithms (Feature)"
+        },
+        "sectionD": {
+          "type": "object",
+          "description": "Project-Specific Details (Overall) or States (Feature)"
+        },
+        "sectionE": {
+          "type": "object",
+          "description": "Technical Details (Feature only)"
+        },
+        "sectionF": {
+          "type": "object",
+          "description": "Validation & Implementation (Feature only)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "lineCount": {
+          "type": "integer"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
