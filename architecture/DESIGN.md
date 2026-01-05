@@ -120,6 +120,10 @@ Core domain types for FDD CLI operations:
 
 - **Feature** ([`gts.ainetx.fdd_cli.features.feature.v1`](../gts/feature.schema.json)): Individual feature entry with slug, name, status (NOT_STARTED/IN_PROGRESS/IMPLEMENTED), design path, and dependencies.
 
+- **DirectoryCreationResult** ([`gts.ainetx.fdd_cli.project.directory_creation_result.v1`](../gts/directory-creation-result.schema.json)): Result of directory creation operation with success status, list of created paths, and optional error message.
+
+- **TemplateGenerationResult** ([`gts.ainetx.fdd_cli.project.template_generation_result.v1`](../gts/template-generation-result.schema.json)): Result of template file generation operation with success status, list of generated file paths, and validation status.
+
 All type definitions are located in `gts/*.schema.json` following GTS specification format.
 
 **Linking**: Use GTS reference format: `gts://gts.ainetx.fdd_cli.<namespace>.<type>.v<version>` in JSON Schema $ref fields. See `spec/GTS/README.md` for complete reference syntax.

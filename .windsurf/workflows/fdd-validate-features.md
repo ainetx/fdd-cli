@@ -1,4 +1,4 @@
-# Validate Features
+# Validate Features Manifest
 
 **FDD Workflow**: `spec/FDD/workflows/04-validate-features.md`
 

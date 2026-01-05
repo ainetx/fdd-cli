@@ -1,4 +1,4 @@
-# Configure Agent Tools
+# Workflow: Configure Agent for FDD
 
 **FDD Workflow**: `spec/FDD/workflows/config-agent-tools.md`
 

@@ -1,4 +1,4 @@
-# Initialize Project
+# Initialize FDD Project
 
 **FDD Workflow**: `spec/FDD/workflows/01-init-project.md`
 

@@ -1,4 +1,4 @@
-# Initialize Features
+# Initialize Features from Overall Design
 
 **FDD Workflow**: `spec/FDD/workflows/03-init-features.md`
 

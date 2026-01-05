@@ -1,15 +1,15 @@
-# Validate OpenSpec
+# Validate OpenSpec Structure
 
-**FDD Workflow**: `spec/FDD/workflows/13-openspec-validate.md`
+**FDD Workflow**: `spec/FDD/workflows/12-openspec-validate.md`
 
 ---
 
 ## Execute
 
 ```
-Follow @spec/FDD/workflows/13-openspec-validate.md
+Follow @spec/FDD/workflows/12-openspec-validate.md
 ```
 
 ---
 
-**Note**: This wrapper calls FDD workflow. All logic is in `spec/FDD/workflows/13-openspec-validate.md`
+**Note**: This wrapper calls FDD workflow. All logic is in `spec/FDD/workflows/12-openspec-validate.md`

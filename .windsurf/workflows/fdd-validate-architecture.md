@@ -1,4 +1,4 @@
-# Validate Architecture
+# Validate Overall Design
 
 **FDD Workflow**: `spec/FDD/workflows/02-validate-architecture.md`
 

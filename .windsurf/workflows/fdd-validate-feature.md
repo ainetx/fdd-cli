@@ -1,4 +1,4 @@
-# Validate Feature
+# Validate Feature Design
 
 **FDD Workflow**: `spec/FDD/workflows/06-validate-feature.md`
 

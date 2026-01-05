@@ -1,4 +1,4 @@
-# Fix Design
+# Fix Design Issues
 
 **FDD Workflow**: `spec/FDD/workflows/08-fix-design.md`
 
