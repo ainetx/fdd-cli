@@ -30,6 +30,31 @@ Manual edits may be overwritten if workflow is re-run.
 
 ---
 
+## Adapter Dependencies
+
+**Requirements for adapter functionality**:
+
+1. **GTS specification MUST be accessible**
+   - Location: `spec/GTS/README.md`
+   - Purpose: Domain model type validation
+   - Impact if missing: Cannot validate GTS schemas, type definitions will fail
+
+2. **CLISPEC specification MUST be accessible**
+   - Location: `spec/FDD/CLISPEC.md`
+   - Purpose: CLI command definition validation
+   - Impact if missing: Cannot validate command structures, CLI specs will fail
+
+3. **Validation output format**
+   - Report missing specs with clear indication (e.g., "❌ spec missing")
+   - Report accessible specs with confirmation (e.g., "✓ spec found")
+   - List impacts if dependencies unavailable
+
+**Resolution if missing**: Initialize git submodules to ensure all specifications are present
+
+**When to check**: Before starting any FDD work, during adapter initialization, in CI/CD pipelines
+
+---
+
 ## Domain Model
 
 **Technology**: GTS (Global Type System) + JSON Schema
