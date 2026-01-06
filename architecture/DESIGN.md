@@ -4,7 +4,7 @@
 
 ### System Vision
 
-This is a helper tool integrated into all FDD workflows to automate routine operations for AI agents. It generates folder structures, validates files, adapters, overall and feature designs, and manifests. The tool eliminates the need for agents to write and execute code or consume excessive LLM resources. Primarily designed for automated agent workflows rather than manual execution.
+fdd-cli is a command-line tool that implements the Feature-Driven Development (FDD) methodology. It serves as a helper tool integrated into all FDD workflows to automate routine operations for AI agents. The tool generates folder structures, validates files, adapters, overall and feature designs, and manifests, and provides workflow execution support. It eliminates the need for agents to write and execute code or consume excessive LLM resources. The goal is to standardize and automate FDD practices across development teams. Primarily designed for automated agent workflows rather than manual execution.
 
 ### Core Capabilities
 
@@ -19,6 +19,7 @@ This is a helper tool integrated into all FDD workflows to automate routine oper
 ### Actors
 
 - **AI Agent**: Primary user who executes FDD workflows automatically, uses CLI commands for validation, structure generation, and routine operations without writing custom code
+- **Project Adapter**: Defines project-specific technologies (domain model format, API contract format, testing tools) and extends FDD core methodology with custom configurations
 - **Architect**: Designs system architecture, validates Overall Design documents, ensures architectural consistency across features
 - **QA Engineer**: Validates design documents, verifies file structure compliance, ensures FDD methodology adherence
 - **Developer**: Implements features based on validated designs, uses CLI to generate boilerplate structures and validate their work
@@ -65,11 +66,15 @@ Primary use cases derived from actors and capabilities:
 
 ### Business Rules
 
+- All projects must have a valid FDD adapter before any FDD work can begin
+- Overall Design must score ≥90/100 with 100% completeness before proceeding to features
+- Feature Design must score 100/100 with 100% completeness before implementation begins
+- Design documents are the source of truth - if code contradicts design, fix design first then re-validate
+- All validation output must be presented in chat, not as separate report files
+- Workflows must be executed sequentially without skipping validation checkpoints
 - All validation must be deterministic and produce consistent results regardless of execution environment
 - CLI commands must return structured JSON output for easy parsing by AI agents
 - File structure validation must enforce FDD hierarchy strictly (no deviations allowed)
-- Overall Design must score ≥90/100 before feature generation is allowed
-- Feature Design must score 100/100 with 100% completeness before implementation begins
 - All operations must be idempotent (running the same command multiple times produces the same result)
 
 ### Design Principles
